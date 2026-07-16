@@ -1,0 +1,208 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cinzel', serif;
+        }
+
+        body {
+            background: radial-gradient(circle, #1e3a8a, #000000);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        canvas#particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .mantra {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            font-size: clamp(15px, 3vw, 20px);
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            animation: pulseGlow 2s ease-in-out infinite;
+            max-width: 90%;
+        }
+
+        .mantra span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: letterFadeIn 0.5s ease forwards;
+        }
+
+        .welcome-message {
+            position: absolute;
+            top: 100px;
+            text-align: center;
+            font-size: clamp(16px, 4vw, 24px);
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            letter-spacing: 1px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 1.5s ease-in-out;
+            max-width: 90%;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+            margin-top: 150px;
+            width: clamp(250px, 75%, 450px);
+        }
+
+        .nav-item {
+            padding: 15px 60px;
+            background: linear-gradient(45deg, #b8860b, #ffd700);
+            color: #1e3a8a;
+            text-decoration: none;
+            font-size: clamp(16px, 3vw, 22px);
+            border-radius: 50px;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .nav-item:hover {
+            transform: rotate(3deg) scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+            background: linear-gradient(45deg, #ffd700, #ffffe0);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-item:hover::after {
+            opacity: 1;
+        }
+
+        .hero {
+            position: absolute;
+            bottom: 30px;
+            text-align: center;
+            width: 100%;
+            animation: glowText 2s ease-in-out infinite alternate;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 3vw, 24px);
+            max-width: 90%;
+            margin: 0 auto;
+            line-height: 1.5;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glowText {
+            0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+            100% { text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); transform: scale(1); }
+            50% { text-shadow: 0 0 20px rgba(255, 215, 0, 1); transform: scale(1.05); }
+            100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); transform: scale(1); }
+        }
+
+        @keyframes letterFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .mantra {
+                font-size: clamp(14px, 4vw, 20px);
+                padding: 8px 15px;
+            }
+
+            .welcome-message {
+                font-size: clamp(12px, 3.5vw, 18px);
+                padding: 10px 20px;
+                top: 80px;
+            }
+
+            .navbar {
+                margin-top: 120px;
+                width: 90%;
+            }
+
+            .nav-item {
+                font-size: clamp(14px, 2.5vw, 18px);
+                padding: 12px 30px;
+            }
+
+            .hero p {
+                font-size: clamp(14px, 2.5vw, 20px);
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                margin-top: 100px;
+            }
+        }
+
+        /* Embedded font for offline use */
+        @font-face {
+            font-family: 'Cinzel';
+            src: url('data:font/woff2;base64,d09GMgABAAAA...') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }

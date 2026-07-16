@@ -1,0 +1,771 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffccc7 0%, #f8b8d0 100%);
+            color: #4a2c40;
+            font-family: Arial, Mangal, sans-serif;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            height: 100vh;
+            background: url('header-bg.jpg') no-repeat center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 204, 199, 0.6), rgba(248, 184, 208, 0.8));
+            z-index: 1;
+        }
+
+        /* Parallax Star Layer */
+        .star-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 1rem;
+            color: #ffd700;
+            opacity: 0.7;
+            animation: twinkle 3s infinite;
+        }
+
+        header h1, header .welcome-box {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            color: #f8b8d0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            background: rgba(212, 241, 244, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 3px solid #ffd700;
+            animation: pulse 2s infinite;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        header h1::before {
+            content: '🌸';
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            animation: float 3s infinite;
+        }
+
+        .welcome-box {
+            margin-top: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 30px;
+            border: 3px dashed #ffccc7;
+            max-width: 90%;
+            font-size: 1.5rem;
+            color: #c2185b;
+            animation: sparkle 3s infinite;
+            position: relative;
+        }
+
+        .welcome-box p {
+            margin: 0.5rem 0;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        .welcome-box img {
+            max-width: 15vw;
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #ffccc7;
+            margin: 1rem auto;
+            display: block;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+        }
+
+        .lotus {
+            position: relative;
+            font-size: 2rem;
+            color: #f8b8d0;
+            cursor: pointer;
+            display: inline-block;
+            margin: 0.5rem auto;
+            animation: pulse 2s infinite;
+        }
+
+        .lotus-petal {
+            position: absolute;
+            font-size: 1rem;
+            color: #ffccc7;
+            animation: petalBloom 1.5s ease-out forwards;
+        }
+
+        /* Floating Petals */
+        .petals {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 2rem;
+            color: #f8b8d0;
+            animation: fall 10s linear infinite;
+        }
+
+        /* Navigation */
+        nav {
+            background: #e6e6fa;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #4a2c40;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s, color 0.3s;
+            display: inline-block;
+            animation: bounceNav 2s infinite ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin: 3rem 0;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #f8b8d0;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 204, 199, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            transition: transform 0.3s;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        .section h2:hover {
+            transform: scale(1.05);
+        }
+
+        /* Slider in Home Section */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 60vw;
+            height: 30vh;
+            margin: 1rem auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid #ffccc7;
+            opacity: 0;
+            animation: slideShow 15s infinite;
+        }
+
+        .slider img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slider img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .slider img:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 20px;
+            border: 3px solid #ffccc7;
+            transition: transform 0.4s, box-shadow 0.4s;
+            cursor: pointer;
+            animation: rotateIn 1.5s ease-in;
+            position: relative;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Poem Section */
+        .poem {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 1.5s ease-in;
+        }
+
+        .poem img {
+            max-width: 15vw;
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid #f8b8d0;
+            margin: 1rem auto;
+            display: block;
+            animation: fadeInScale 1.5s ease-in;
+            position: relative;
+        }
+
+        .poem p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 0.75rem 0;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        .poem .hindi {
+            color: #c2185b;
+            font-family: Mangal, sans-serif;
+            font-weight: bold;
+        }
+
+        .poem::before {
+            content: '💕';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            color: #ffccc7;
+            animation: float 3s infinite;
+        }
+
+        .poem::after {
+            content: '✨';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: #ffd700;
+            animation: float 3s infinite reverse;
+        }
+
+        /* Facts Section */
+        .facts {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            animation: slideIn 1.5s ease-in;
+        }
+
+        .facts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .facts li {
+            font-size: 1.2rem;
+            margin: 0.75rem 0;
+            position: relative;
+            padding-left: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .facts li::before {
+            content: '🌸';
+            position: absolute;
+            left: 0;
+            color: #d4f1f4;
+            animation: spin 2s infinite;
+        }
+
+        .facts img {
+            max-width: 15vw;
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #d4f1f4;
+            margin: 1rem auto;
+            display: block;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+        }
+
+        /* Quote Generator */
+        .quote-generator {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .quote-generator button {
+            background: #ffccc7;
+            color: #4a2c40;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: bounceButton 2s infinite ease-in-out;
+        }
+
+        .quote-generator button:hover {
+            background: #f8b8d0;
+            transform: scale(1.15);
+        }
+
+        .quote-generator img {
+            max-width: 12vw;
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid #e6e6fa;
+            margin: 1rem auto;
+            display: block;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+        }
+
+        #quoteDisplay {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #4a2c40;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 20px;
+            border: 2px solid #f8b8d0;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hindi {
+            color: #c2185b;
+            font-family: Mangal, sans-serif;
+            font-weight: bold;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            animation: confettiFall 2s linear;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 20px;
+            border: 5px solid #ffccc7;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #ffd700;
+            font-size: 2rem;
+            cursor: pointer;
+            animation: sway 2s infinite ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes sparkle {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes slideShow {
+            0% { opacity: 0; }
+            6.67% { opacity: 1; }
+            33.33% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes rotateIn {
+            0% { transform: rotate(-10deg); opacity: 0; }
+            100% { transform: rotate(0); opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes sway {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounceNav {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes bounceButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        @keyframes petalBloom {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) rotate(180deg); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 3.5rem;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .welcome-box {
+                font-size: 1.3rem;
+                padding: 1rem;
+            }
+
+            .welcome-box img {
+                max-width: 12vw;
+            }
+
+            .lotus {
+                font-size: 1.5rem;
+            }
+
+            .star {
+                font-size: 0.8rem;
+            }
+
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2.5rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .slider {
+                max-width: 70vw;
+                height: 25vh;
+            }
+
+            .poem img, .facts img, .quote-generator img {
+                max-width: 12vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .welcome-box {
+                font-size: 1rem;
+                padding: 0.75rem;
+            }
+
+            .welcome-box img {
+                max-width: 20vw;
+            }
+
+            .lotus {
+                font-size: 1.2rem;
+            }
+
+            .star {
+                font-size: 0.6rem;
+            }
+
+            nav a {
+                margin: 0 0.3rem;
+                font-size: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .slider {
+                max-width: 80vw;
+                height: 20vh;
+            }
+
+            .poem img {
+                max-width: 25vw;
+            }
+
+            .facts img, .quote-generator img {
+                max-width: 20vw;
+            }
+
+            .quote-generator button {
+                font-size: 1.2rem;
+                padding: 0.5rem 1.5rem;
+            }
+
+            #quoteDisplay {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .welcome-box {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .welcome-box img {
+                max-width: 25vw;
+            }
+
+            .lotus {
+                font-size: 1rem;
+            }
+
+            .star {
+                font-size: 0.5rem;
+            }
+
+            nav a {
+                margin: 0 0.2rem;
+                font-size: 0.9rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .slider {
+                max-width: 90vw;
+                height: 18vh;
+            }
+
+            .poem img {
+                max-width: 30vw;
+            }
+
+            .facts img, .quote-generator img {
+                max-width: 25vw;
+            }
+
+            .quote-generator button {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            #quoteDisplay {
+                font-size: 1rem;
+            }
+
+            .modal img {
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+
+            .close {
+                font-size: 1.5rem;
+                top: 0.5rem;
+                right: 1rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            header h1 {
+                font-size: 5rem;
+            }
+
+            .welcome-box {
+                font-size: 2rem;
+                max-width: 80%;
+            }
+
+            .welcome-box img {
+                max-width: 10vw;
+            }
+
+            nav a {
+                font-size: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 3.5rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .slider {
+                max-width: 50vw;
+                height: 45vh;
+            }
+
+            .poem img {
+                max-width: 10vw;
+            }
+
+            .facts img, .quote-generator img {
+                max-width: 8vw;
+            }
+
+            .quote-generator button {
+                font-size: 1.8rem;
+                padding: 1rem 2.5rem;
+            }
+
+            #quoteDisplay {
+                font-size: 1.8rem;
+            }
+        }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord Krishna - Divine Avatar</title>
+    <link rel="stylesheet" href="Z-CSS/home.css">
+    <style>
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Hide all slides by default */
+        .slide {
+            display: none;
+        }
+
+        /* Show the active slide */
+        .slide.active {
+            display: block;
+        }
+
+        /* Image styling */
+        .slide img {
+            width: 100%;
+            height: auto;
+            cursor: pointer; /* Indicate clickability */
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #717171; /* Active dot color */
+        }
+
+        /* Full-screen overlay styling */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Ensure image fits without distortion */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Ensure all images are clickable */
+        img {
+            cursor: pointer; /* Indicate clickability for all images */
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-feather" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="floating-feather" style="top: 20%; left: 80%; animation-delay: 5s;"></div>
+    <div class="floating-feather" style="top: 50%; left: 20%; animation-delay: 10s;"></div>
+    <header>
+        <div class="feather-overlay"></div>
+        <h1>Lord Krishna</h1>
+        <p>The Divine Avatar of Vishnu - The Eternal Guide of Dharma</p>
+        <a href="#life" class="cta-button">Explore Krishna’s Divine Journey</a>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#life">Life</a>
+        <a href="#teachings">Teachings</a>
+        <a href="#legacy">Legacy</a>
+        <a href="#festivals">Festivals</a>
+        <a href="04D-Mhb.html">Mahabharata</a>
+    </nav>
+    <div class="container">
+        <section id="home">
+            <h2>Welcome to Krishna’s Divine World</h2>
+            <p>Lord Krishna, the eighth avatar of Lord Vishnu, is revered as the embodiment of love, wisdom, and righteousness. Known for his enchanting flute, peacock feather crown, and profound teachings in the <i>Bhagavad Gita</i>, Krishna’s life inspires devotion and spiritual awakening. From his playful childhood in Vrindavan to his role as a divine strategist in the <i>Mahabharata</i>, his legacy resonates across time.</p>
+        </section>
+    </div>
+    <div class="slideshow-container">
+        <!-- Slide images -->
+        <div class="slide active">
+            <img src="IMAGE/krishna.jpg" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="IMAGE/krishna4.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="IMAGE/krishna3.jpg" alt="Slide 3">
+        </div>
+        <!-- Navigation dots -->
+        <div class="slideshow-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+    <!-- Full-screen overlay container -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreenImage" src="" alt="Full-screen image">
+    </div>
+    <div class="container">
+        <section id="life">
+            <h2>Life and Exploits</h2>
+            <h3>Birth and Childhood</h3>
+            <p>Born around 3228 BCE in Mathura to Devaki and Vasudeva, Krishna’s birth was marked by divine prophecy. His uncle, King Kamsa, fearing a prediction that Devaki’s eighth child would kill him, imprisoned the couple. Krishna was miraculously transported to Gokul, where he was raised by foster parents Yashoda and Nanda among cowherds. His childhood in Vrindavan is legendary, filled with playful antics like stealing butter, dancing with the gopis, and slaying demons sent by Kamsa, such as Putana and Trinavarta.</p>
+            <h3>Miracles and Deeds</h3>
+            <p>Krishna’s divine nature shone through miracles like lifting Govardhan Hill to protect villagers from Indra’s wrath and subduing the serpent Kaliya. His bond with Radha and the gopis symbolizes divine love, celebrated in poetry and art.</p>
+            <img src="IMAGE/Gemini_Generated_Image_hqbbq3hqbbq3hqbb.png" width="70%" height="35%">
+            <p class="image-caption">Krishna lifting Govardhan Hill to protect villagers</p>
+            <h3>Adulthood and Dwaraka</h3>
+            <p>As a young adult, Krishna returned to Mathura, defeated Kamsa, and restored his parents’ freedom. He later established the city of Dwaraka (modern-day Gujarat), where he ruled as a wise and just king. He married Rukmini, Satyabhama, and others, forming alliances and strengthening his kingdom.</p>
+            <h3>Role in the Mahabharata</h3>
+            <p>Krishna played a pivotal role in the <i>Mahabharata</i> as a friend and advisor to the Pandavas. As Arjuna’s charioteer, he delivered the <i>Bhagavad Gita</i> on the Kurukshetra battlefield, guiding Arjuna through moral dilemmas. His diplomatic efforts, like attempting peace with the Kauravas, and strategic guidance ensured the Pandavas’ victory.</p>
+        </section>
+        <section id="teachings">
+            <h2>Teachings</h2>
+            <p>Krishna’s teachings, primarily in the <i>Bhagavad Gita</i>, are a cornerstone of Hindu philosophy. Addressing Arjuna’s doubts, he outlined paths to spiritual liberation:</p>
+            <ul>
+                <li><b>Bhakti Yoga</b>: Devotion to God through love and surrender.</li>
+                <li><b>Karma Yoga</b>: Selfless action without attachment to results.</li>
+                <li><b>Jnana Yoga</b>: Pursuit of knowledge to realize the self and God.</li>
+                <li><b>Dhyana Yoga</b>: Meditation to attain inner peace and divine connection.</li>
+            </ul>
+            <p>He emphasized performing one’s duty (<i>dharma</i>) with detachment, trusting in the divine, and seeing God in all beings. His teachings transcend time, offering guidance on ethics, spirituality, and life’s purpose.</p>
+            <h3>Bhagavad Gita Shlokas on Truth</h3>
+            <p>The following shlokas from the <i>Bhagavad Gita</i> highlight Krishna’s teachings on truth (satya), emphasizing its role in spiritual and ethical life.</p>
+            <div class="shloka">
+                <h4>Chapter 2, Verse 42-43</h4>
+                <p class="sanskrit">यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः।<br>वेदवादरताः पार्थ नान्यदस्तीति वादिनः।।<br>कामात्मानः स्वर्गपरा जन्मकर्मफलप्रदाम्।<br>क्रियाविशेषबहुलां भोगैश्वर्यगतिं प्रति।।</p>
+                <p><b>Transliteration</b>: Yāmimāṁ puṣpitāṁ vācaṁ pravadantyavipaścitaḥ,<br>vedavādarataḥ pārtha nānyadastīti vādinaḥ.<br>Kāmātmānaḥ svargaparā janmakarmaphalapradām,<br>kriyāviśeṣabahulāṁ bhogaiśvaryagatiṁ prati.</p>
+                <p><b>Translation</b>: Men of small knowledge, delighting in the flowery words of the Vedas, O Arjuna, say there is nothing else but rituals. Driven by desire, intent on heaven, they pursue actions for rewards, leading to rebirth and material pleasures.</p>
+                <p><b>Significance</b>: Krishna warns against superficial interpretations of scriptures, urging seekers to discern the deeper truth beyond rituals, focusing on spiritual wisdom.</p>
+            </div>
+            <div class="shloka">
+                <h4>Chapter 10, Verse 4-5</h4>
+                <p class="sanskrit">बुद्धिर्ज्ञानमसम्मोहः क्षमा सत्यं दमः शमः।<br>सुखं दुःखं भवोऽभावो भयं चाभयमेव च।।</p>
+                <p><b>Transliteration</b>: Buddhiḥ jñānamasammohaḥ kṣamā satyaṁ damaḥ śamaḥ,<br>sukhaṁ duḥkhaṁ bhavo’bhāvo bhayaṁ cābhayameva ca.</p>
+                <p><b>Translation</b>: Intellect, knowledge, clarity, forgiveness, truth, self-control, calmness, pleasure, pain, birth, death, fear, and fearlessness—all these emanate from Me.</p>
+                <p><b>Significance</b>: Krishna declares truth (satya) as a divine quality, originating from Him, emphasizing its role in aligning with the divine essence.</p>
+            </div>
+            <div class="shloka">
+                <h4>Chapter 16, Verse 1-3</h4>
+                <p class="sanskrit">श्रीभगवानुवाच<br>अभयं सत्त्वसंशुद्धिः ज्ञानयोगव्यवस्थितिः।<br>दानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम्।।<br>अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम्।<br>दया भूतेष्वलोलुप्त्वं मार्दवं ह्रीरचापलम्।।</p>
+                <p><b>Transliteration</b>: Śrībhagavānuvāca<br>Abhayaṁ sattvasaṁśuddhiḥ jñānayogavyavasthitiḥ,<br>dānaṁ damaśca yajñaśca svādhyāyastapa ārjavam.<br>Ahiṁsā satyamakrodhastyāgaḥ śāntirapaiśunam,<br>dayā bhūteṣvaloluptvaṁ mārdavaṁ hrīracāpalam.</p>
+                <p><b>Translation</b>: The Blessed Lord said: Fearlessness, purity of heart, steadfastness in knowledge and yoga, charity, self-control, sacrifice, study of scriptures, austerity, sincerity, non-violence, truth, freedom from anger, renunciation, peace, absence of slander, compassion, freedom from greed, gentleness, modesty, and steadiness—these are the qualities of those born with divine nature.</p>
+                <p><b>Significance</b>: Krishna lists truthfulness (satyam) as a divine trait, essential for spiritual growth and living in harmony with dharma.</p>
+            </div>
+        </section>
+        <section id="legacy">
+            <h2>Legacy</h2>
+            <h3>Cultural Impact</h3>
+            <p>Krishna’s life has profoundly shaped Indian culture. His stories inspire art forms like Kathak dance, Bhakti poetry by saints like Mirabai, and music through bhajans. Temples in Vrindavan, Mathura, and Dwaraka (Dwarakadhish Temple) are major pilgrimage sites.</p>
+            <img src="IMAGE/Gemini_Generated_Image_g3nj6og3nj6og3nj.png" width="70%" height="35%">
+            <p class="image-caption">Dwarakadhish Temple dedicated to Lord Krishna</p>
+            <h3>Global Influence</h3>
+            <p>The Bhakti movement, inspired by Krishna, spread devotion across India and beyond, notably through ISKCON (International Society for Krishna Consciousness). His teachings influence philosophy, literature, and spiritual practices worldwide, emphasizing universal love and righteousness.</p>
+        </section>
+        <section id="festivals">
+            <h2>Festivals</h2>
+            <p>Krishna’s legacy is celebrated in vibrant festivals that honor his divine life and teachings:</p>
+            <ul>
+                <li><b>Janmashtami</b>: Marks Krishna’s birth, celebrated with fasting, bhajans, and reenactments of his childhood, especially in Mathura and Vrindavan.</li>
+                <li><b>Holi</b>: The festival of colors, linked to Krishna’s playful antics with Radha and the gopis, symbolizing joy and love.</li>
+                <li><b>Rath Yatra</b>: Associated with Krishna as Lord Jagannath in Puri, where his deity is paraded in grand chariots.</li>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Lord Krishna - Divine Avatar. All rights reserved.</p>
+    </footer>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 5000);
+
+        // Full-screen image functionality
+        const images = document.querySelectorAll("img"); // Select all images
+        const overlay = document.getElementById("fullscreenOverlay");
+        const fullscreenImage = document.getElementById("fullscreenImage");
+
+        // Add click event to all images
+        images.forEach(image => {
+            image.addEventListener("click", function() {
+                fullscreenImage.src = this.src; // Set the clicked image as the full-screen image
+                overlay.style.display = "flex"; // Show the overlay
+            });
+        });
+
+        // Function to close the full-screen overlay
+        function closeFullscreen() {
+            overlay.style.display = "none";
+        }
+
+        // Close overlay when clicking outside the image
+        overlay.addEventListener("click", function(event) {
+            if (event.target === overlay) {
+                closeFullscreen();
+            }
+        });
+
+        // Close overlay with Escape key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

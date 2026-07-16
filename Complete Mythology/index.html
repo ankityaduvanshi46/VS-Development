@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Divine Journey</title>
+    <link rel="stylesheet" href="Z-CSS/WELCOME INDEX.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+    <div class="mantra">
+        <span>O</span><span>m</span><span> </span><span>N</span><span>a</span><span>m</span><span>o</span><span> </span>
+        <span>B</span><span>h</span><span>a</span><span>g</span><span>a</span><span>v</span><span>a</span><span>t</span><span>e</span><span> </span>
+        <span>V</span><span>a</span><span>s</span><span>u</span><span>d</span><span>e</span><span>v</span><span>a</span><span>y</span><span>a</span><span> </span>
+        <span>N</span><span>a</span><span>m</span><span>a</span><span>h</span>
+    </div>
+    <div class="welcome-message">Welcome, seeker of divine wisdom! What are you searching for?</div>
+    <nav class="navbar">
+        <a href="all/02B-Lord KR.html" class="nav-item">Lord Krishna</a>
+        <a href="all/03C-Love.html" class="nav-item">Radha Krishna</a>
+        <a href="all/04D-Mhb.html" class="nav-item">Mahabharat</a>
+        <a href="all/05E-Gita.html" class="nav-item">Bhagavad Gita</a>
+        <a href="all/06F-Special.html" class="nav-item">Special One</a>
+    </nav>
+    <section class="hero">
+        <p>"In the embrace of Krishna's wisdom and Radha's love, find the eternal path to divine enlightenment."</p>
+    </section>
+
+    <script>
+        // Particle effect for background
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.size <= 0.2) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle());
+                }
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', resizeCanvas);
+
+        // Staggered animation for nav items
+        document.querySelectorAll('.nav-item').forEach((item, index) => {
+            item.style.animation = `float 3s ease-in-out infinite ${index * 0.2}s`;
+        });
+
+        // Staggered animation for mantra letters
+        document.querySelectorAll('.mantra span').forEach((span, index) => {
+            span.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>

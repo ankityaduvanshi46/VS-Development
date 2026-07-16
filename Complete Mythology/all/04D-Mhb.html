@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata and the Pandavas</title>
+    <link rel="stylesheet" href="Z-CSS/mhb.css">
+</head>
+<body>
+    <header>
+        <h1>Mahabharata and the Pandavas</h1>
+        <p>Explore the Epic Saga and Its Legendary Heroes</p>
+    </header>
+    <nav>
+        <a href="#mahabharata">Mahabharata Overview</a>
+        <a href="#pandavas">The Pandavas</a>
+        <a href="#characters">Key Characters</a>
+        <a href="#shlokas">Shlokas</a>
+        <a href="#quiz">Quiz</a>
+    </nav><br>
+    <center><img src="IMAGE/Gemini_Generated_Image_fy1zpxfy1zpxfy1z.png" width="1000" height="500"></center>
+    <!-- Full-screen image modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-btn" onclick="closeFullScreen()">&times;</span>
+        <img id="fullScreenImage" src="" alt="Full-screen image">
+    </div>
+    <div class="container">
+        <div class="section" id="mahabharata">
+            <h2>Mahabharata Overview</h2>
+            <p>The Mahabharata is one of the two major Sanskrit epics of ancient India, alongside the Ramayana. Attributed to the sage Vyasa, it is a monumental narrative encompassing stories, teachings, and philosophical discourses. The central plot revolves around the conflict between the Pandavas and the Kauravas, culminating in the Kurukshetra War.</p>
+            <p>Beyond a tale of war, the Mahabharata explores dharma (duty), righteousness, and human emotions. It includes the Bhagavad Gita, a dialogue between Lord Krishna and Arjuna addressing moral dilemmas. Spanning over 100,000 verses across 18 books (parvas), it offers insights into ancient Indian culture, politics, and spirituality.</p>
+        </div>
+        <div class="section" id="pandavas">
+            <h2>The Five Pandavas</h2>
+            <p>The Pandavas, sons of King Pandu, are central to the Mahabharata. Known for their virtues and skills, they played pivotal roles in the Kurukshetra War. Click on each name to learn more.</p>
+            <div class="pandava">
+                <h3 onclick="toggleContent('yudhishthira')">Yudhishthira</h3>
+                <div id="yudhishthira" class="pandava-content">
+                    <img src="IMAGE/yud.png" alt="Yudhishthira">
+                    <p><strong>Epithet:</strong> Dharmaraja (King of Righteousness)</p>
+                    <p><strong>Parentage:</strong> Son of Kunti and Yama (god of death and dharma).</p>
+                    <p><strong>Skills and Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Righteousness:</strong> Unwavering commitment to truth and dharma, except in one strategic instance.</li>
+                        <li><strong>Leadership:</strong> Eldest Pandava and king of Indraprastha, known for wisdom and fairness.</li>
+                        <li><strong>Spear Mastery:</strong> Proficient with the spear, though he relied on strategy.</li>
+                        <li><strong>Gambling Weakness:</strong> Lost the kingdom in a rigged dice game, leading to exile.</li>
+                    </ul>
+                    <p>Yudhishthira’s adherence to dharma guided the Pandavas through ethical challenges.</p>
+                </div>
+            </div>
+            <div class="pandava">
+                <h3 onclick="toggleContent('bhima')">Bhima</h3>
+                <div id="bhima" class="pandava-content">
+                    <img src="IMAGE/bhima.png" alt="Bhima">
+                    <p><strong>Epithet:</strong> Vrikodara (Wolf-bellied)</p>
+                    <p><strong>Parentage:</strong> Son of Kunti and Vayu (wind god).</p>
+                    <p><strong>Skills and Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Immense Strength:</strong> Superhuman strength, capable of wielding massive maces.</li>
+                        <li><strong>Mace Combat:</strong> Defeated warriors like Duryodhana with his mace skills.</li>
+                        <li><strong>Loyalty:</strong> Fiercely protective of his brothers and Draupadi.</li>
+                        <li><strong>Culinary Skills:</strong> An excellent cook during the Pandavas’ exile.</li>
+                    </ul>
+                    <p>Bhima’s strength and courage made him a formidable warrior in the Kurukshetra War.</p>
+                </div>
+            </div>
+            <div class="pandava">
+                <h3 onclick="toggleContent('arjuna')">Arjuna</h3>
+                <div id="arjuna" class="pandava-content">
+                    <img src="IMAGE/arjuna.png" alt="Arjuna">
+                    <p><strong>Epithet:</strong> Dhananjaya (Conqueror of Wealth)</p>
+                    <p><strong>Parentage:</strong> Son of Kunti and Indra (king of gods).</p>
+                    <p><strong>Skills and Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Archery:</strong> Master archer with the Gandiva bow, skilled in divine weapons.</li>
+                        <li><strong>Warrior Skills:</strong> Trained by Drona, nearly invincible in battle.</li>
+                        <li><strong>Discipline:</strong> Favored by Krishna for his focus and dedication.</li>
+                        <li><strong>Arts:</strong> Skilled in music, dance, and poetry.</li>
+                    </ul>
+                    <p>Arjuna’s role in the war and the Bhagavad Gita underscores his significance.</p>
+                </div>
+            </div>
+            <div class="pandava">
+                <h3 onclick="toggleContent('nakula')">Nakula</h3>
+                <div id="nakula" class="pandava-content">
+                    <img src="IMAGE/nakula.png" alt="Nakula">
+                    <p><strong>Epithet:</strong> The Handsome One</p>
+                    <p><strong>Parentage:</strong> Son of Madri and the Ashwini Kumaras (healing gods).</p>
+                    <p><strong>Skills and Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Swordsmanship:</strong> Highly skilled with the sword.</li>
+                        <li><strong>Horsemanship:</strong> Expert in handling horses and chariots.</li>
+                        <li><strong>Beauty:</strong> Renowned for his charm and good looks.</li>
+                        <li><strong>Diplomacy:</strong> Gentle and diplomatic, balancing his brothers.</li>
+                    </ul>
+                    <p>Nakula’s grace and skills complemented the Pandavas’ strength.</p>
+                </div>
+            </div>
+            <div class="pandava">
+                <h3 onclick="toggleContent('sahadeva')">Sahadeva</h3>
+                <div id="sahadeva" class="pandava-content">
+                    <img src="IMAGE/sh.png" alt="Sahadeva">
+                    <p><strong>Epithet:</strong> The Wise One</p>
+                    <p><strong>Parentage:</strong> Son of Madri and the Ashwini Kumaras.</p>
+                    <p><strong>Skills and Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Wisdom:</strong> The wisest Pandava, known for intelligence and foresight.</li>
+                        <li><strong>Astrology:</strong> Skilled in astrology and interpreting omens.</li>
+                        <li><strong>Swordsmanship:</strong> Proficient with the sword.</li>
+                        <li><strong>Cattle Management:</strong> Expert in cattle rearing during exile.</li>
+                    </ul>
+                    <p>Sahadeva’s wisdom made him a key advisor to his brothers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="characters">
+            <h2>Key Characters of the Mahabharata</h2>
+            <p>Besides the Pandavas, several other characters play pivotal roles in the Mahabharata, shaping its narrative and philosophical depth. Click on each name to learn more.</p>
+            <div class="character">
+                <h3 onclick="toggleContent('krishna')">Krishna</h3>
+                <div id="krishna" class="character-content">
+                    <img src="IMAGE/krish.jpg" alt="Krishna">
+                    <p><strong>Role:</strong> Divine Guide and Strategist</p>
+                    <p><strong>Description:</strong> Lord Krishna, an incarnation of Vishnu, is Arjuna’s charioteer and spiritual guide. His counsel in the Bhagavad Gita helps Arjuna resolve his moral dilemmas before the Kurukshetra War. Krishna’s wisdom, diplomacy, and divine interventions ensure the Pandavas’ victory.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Delivers the Bhagavad Gita, teaching dharma and detachment.</li>
+                        <li>Advises the Pandavas strategically, outwitting the Kauravas.</li>
+                        <li>Protects Draupadi during her humiliation in the dice game.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="character">
+                <h3 onclick="toggleContent('draupadi')">Draupadi</h3>
+                <div id="draupadi" class="character-content">
+                    <img src="IMAGE/drau.png" alt="Draupadi">
+                    <p><strong>Role:</strong> Wife of the Pandavas</p>
+                    <p><strong>Description:</strong> Draupadi, also known as Panchali, is the wife of all five Pandavas. Born from a sacrificial fire, she is a central figure whose humiliation in the dice game fuels the conflict leading to the Kurukshetra War. Her strength and dignity make her a symbol of resilience.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Unites the Pandavas through her marriage to all five.</li>
+                        <li>Her insult by the Kauravas sparks the Pandavas’ resolve for justice.</li>
+                        <li>Provides moral support during the Pandavas’ exile.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="character">
+                <h3 onclick="toggleContent('duryodhana')">Duryodhana</h3>
+                <div id="duryodhana" class="character-content">
+                    <img src="IMAGE/dhru.png" alt="Duryodhana">
+                    <p><strong>Role:</strong> Leader of the Kauravas</p>
+                    <p><strong>Description:</strong> Duryodhana, the eldest Kaurava, is the primary antagonist whose ambition and envy drive the conflict with the Pandavas. His refusal to share the kingdom and orchestration of the dice game lead to the Kurukshetra War.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Instigates the game of dice, leading to the Pandavas’ exile.</li>
+                        <li>Leads the Kaurava army in the Kurukshetra War.</li>
+                        <li>His rivalry with Bhima culminates in a fatal mace duel.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="character">
+                <h3 onclick="toggleContent('bhishma')">Bhishma</h3>
+                <div id="bhishma" class="character-content">
+                    <img src="IMAGE/pitama.png" alt="Bhishma">
+                    <p><strong>Role:</strong> Patriarch of the Kuru Dynasty</p>
+                    <p><strong>Description:</strong> Bhishma, also known as Devavrata, is the grand patriarch of the Kuru family, renowned for his vow of celibacy and loyalty to Hastinapura. A formidable warrior and scholar, he fights for the Kauravas but remains impartial in his wisdom.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Guides both Pandavas and Kauravas as a mentor and elder.</li>
+                        <li>Leads the Kaurava army in the first ten days of the Kurukshetra War.</li>
+                        <li>His death on a bed of arrows marks a turning point in the war.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="character">
+                <h3 onclick="toggleContent('karna')">Karna</h3>
+                <div id="karna" class="character-content">
+                    <img src="IMAGE/karna.png" alt="Karna">
+                    <p><strong>Role:</strong> Warrior and Ally of the Kauravas</p>
+                    <p><strong>Description:</strong> Karna, the secret son of Kunti and the Sun God Surya, is a tragic hero and skilled archer rivaling Arjuna. Raised as a low-caste charioteer’s son, he aligns with Duryodhana out of loyalty and fights for the Kauravas despite knowing his true heritage.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Renowned for his archery skills and generosity.</li>
+                        <li>Plays a major role in the Kurukshetra War, challenging Arjuna.</li>
+                        <li>His tragic death, due to curses and Krishna’s strategies, is a pivotal moment.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="character">
+                <h3 onclick="toggleContent('shakuni')">Shakuni</h3>
+                <div id="shakuni" class="character-content">
+                    <img src="IMAGE/sakuni.jpg" alt="Shakuni">
+                    <p><strong>Role:</strong> Manipulator and Strategist</p>
+                    <p><strong>Description:</strong> Shakuni, the prince of Gandhara and Duryodhana’s maternal uncle, is a cunning strategist who fuels the rivalry between the Kauravas and Pandavas. His expertise in dice and manipulative schemes drive key conflicts in the epic.</p>
+                    <p><strong>Key Contributions:</strong></p>
+                    <ul>
+                        <li>Orchestrates the rigged dice game, leading to the Pandavas’ exile.</li>
+                        <li>Advises Duryodhana, escalating tensions with the Pandavas.</li>
+                        <li>Killed by Sahadeva in the Kurukshetra War.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="shlokas">
+            <h2>Notable Shlokas from the Mahabharata</h2>
+            <p>The Mahabharata, particularly through the Bhagavad Gita, contains profound shlokas (verses) that offer spiritual and philosophical insights. Below are three significant shlokas with their Sanskrit text, transliteration, translation, and meaning.</p>
+            <div class="shloka">
+                <h3>Shloka 1: Bhagavad Gita 2.47</h3>
+                <p class="sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+                <p><strong>Transliteration:</strong> Karmany evadhikaras te ma phaleshu kadachana,<br>Ma karma-phala-hetur bhur ma te sango ’stv akarmani.</p>
+                <p><strong>Translation:</strong> You have a right to perform your prescribed duty, but you are not entitled to the fruits of action. Never consider yourself the cause of the results of your activities, nor be attached to inaction.</p>
+                <p><strong>Meaning:</strong> Spoken by Lord Krishna to Arjuna, this shloka emphasizes performing one’s duty without attachment to outcomes. It teaches detachment and focus on action, a core principle of Karma Yoga, encouraging Arjuna to fight in the war without worrying about victory or defeat.</p>
+            </div>
+            <div class="shloka">
+                <h3>Shloka 2: Bhagavad Gita 3.16</h3>
+                <p class="sanskrit">एवं प्रवर्तितं चक्रं नानुवर्तयतीह यः।<br>अघायुरिन्द्रियारामो मोघं पार्थ स जीवति॥</p>
+                <p><strong>Transliteration:</strong> Evam pravartitam chakram nanuvartayatiha yah,<br>Aghayur indriyaramah mogham partha sa jivati.</p>
+                <p><strong>Translation:</strong> He who does not follow the wheel of creation set in motion in this world, living a sinful life, rejoicing in the senses, lives in vain, O Partha (Arjuna).</p>
+                <p><strong>Meaning:</strong> Krishna explains the importance of participating in the cycle of duties that sustain the world. This shloka underscores the need for purposeful action aligned with dharma, rather than indulging in selfish pleasures.</p>
+            </div>
+            <div class="shloka">
+                <h3>Shloka 3: Bhagavad Gita 4.7</h3>
+                <p class="sanskrit">यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।<br>अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥</p>
+                <p><strong>Transliteration:</strong> Yada yada hi dharmasya glanir bhavati bharata,<br>Abhyutthanam adharmasya tadatmanam srijamy aham.</p>
+                <p><strong>Translation:</strong> Whenever there is a decline in righteousness and an increase in unrighteousness, O Bharata (Arjuna), at that time I manifest Myself.</p>
+                <p><strong>Meaning:</strong> Krishna assures Arjuna that divine intervention occurs whenever dharma declines. This shloka highlights the concept of divine avatars restoring balance, with Krishna’s role in the Mahabharata as an example.</p>
+            </div>
+        </div>
+        <div class="section" id="quiz">
+            <h2>Test Your Mahabharata Knowledge</h2>
+            <div class="quiz">
+                <p id="quiz-question"></p>
+                <div id="quiz-options"></div>
+                <button onclick="checkAnswer()">Submit Answer</button>
+                <p id="quiz-result"></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Mahabharata and Pandavas. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
+            content.classList.toggle('visible', !isVisible);
+        }
+
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                smoothScroll(this.getAttribute('href'));
+            });
+        });
+
+        // Full-screen image functionality
+        const images = document.querySelectorAll('img');
+        const modal = document.getElementById('imageModal');
+        const fullScreenImage = document.getElementById('fullScreenImage');
+
+        images.forEach(image => {
+            image.addEventListener('click', function() {
+                fullScreenImage.src = this.src;
+                modal.style.display = 'flex';
+            });
+        });
+
+        function closeFullScreen() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeFullScreen();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFullScreen();
+            }
+        });
+
+        const quizQuestions = [
+            {
+                question: "Who is known as the eldest Pandava?",
+                options: ["Arjuna", "Bhima", "Yudhishthira", "Nakula"],
+                correct: "Yudhishthira"
+            },
+            {
+                question: "Which Pandava is famous for his archery skills?",
+                options: ["Bhima", "Arjuna", "Sahadeva", "Yudhishthira"],
+                correct: "Arjuna"
+            },
+            {
+                question: "What is the name of the war central to the Mahabharata?",
+                options: ["Trojan War", "Kurukshetra War", "Battle of Lanka", "War of Dwaraka"],
+                correct: "Kurukshetra War"
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function loadQuiz() {
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = q.question;
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+            q.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => selectOption(option);
+                optionsDiv.appendChild(button);
+            });
+            document.getElementById('quiz-result').textContent = '';
+        }
+
+        function selectOption(selected) {
+            const q = quizQuestions[currentQuestion];
+            const result = document.getElementById('quiz-result');
+            if (selected === q.correct) {
+                result.textContent = 'Correct!';
+            } else {
+                result.textContent = `Wrong! The correct answer is ${q.correct}.`;
+            }
+            setTimeout(() => {
+                currentQuestion = (currentQuestion + 1) % quizQuestions.length;
+                loadQuiz();
+            }, 2000);
+        }
+
+        function checkAnswer() {
+            const selected = document.querySelector('#quiz-options button.active');
+            if (selected) selectOption(selected.textContent);
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.parentNode.id === 'quiz-options') {
+                document.querySelectorAll('#quiz-options button').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+
+        // Scroll-based section animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => observer.observe(section));
+
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>
