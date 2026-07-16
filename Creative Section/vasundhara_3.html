@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vasundhara Resort | Jabalpur, Madhya Pradesh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .heading-font {
+      font-family: 'Playfair Display', serif;
+    }
+    .hero-bg {
+      background-image: linear-gradient(rgba(15, 118, 110, 0.75), rgba(15, 118, 110, 0.85)), 
+                        url('https://picsum.photos/id/1015/2000/1200');
+      background-size: cover;
+      background-position: center;
+    }
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-15px) scale(1.04);
+      box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.3);
+    }
+    .gallery-img {
+      transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+      cursor: pointer;
+    }
+    .gallery-img:hover {
+      transform: scale(1.12);
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #D4AF37;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-[#F8F4F0] text-[#1F2937]">
+
+  <!-- NAVBAR -->
+  <nav class="bg-[#0F766E] text-white sticky top-0 z-40 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-white rounded-3xl flex items-center justify-center text-[#0F766E] text-4xl font-bold shadow-inner">V</div>
+        <div>
+          <span class="heading-font text-3xl tracking-tighter">Vasundhara</span>
+          <p class="text-xs -mt-1 text-white/70">Jabalpur, Madhya Pradesh</p>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex gap-8 text-lg items-center">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#rooms" class="nav-link">Rooms</a>
+        <a href="#dining" class="nav-link">Dining</a>
+        <a href="#pool" class="nav-link">Pool &amp; Events</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <button onclick="openInquiryModal()" class="text-[#D4AF37] font-semibold tracking-wide border border-[#D4AF37] px-4 py-1.5 rounded-full hover:bg-[#D4AF37] hover:text-[#0F766E] transition text-sm">Have Questions?</button>
+      </div>
+      
+      <button onclick="openBookingModal()" 
+              class="bg-gradient-to-r from-[#D4AF37] to-[#F5E8C7] text-[#0F766E] font-semibold px-8 py-3 rounded-3xl hover:scale-105 transition-all">
+        BOOK YOUR STAY
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-bg h-screen flex items-center text-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="heading-font text-6xl md:text-7xl lg:text-[5.5rem] leading-none tracking-tighter mb-6">
+        VASUNDHARA RESORT<br>JABALPUR
+      </h1>
+      <p class="text-2xl md:text-3xl mb-10 max-w-2xl mx-auto">Where luxury meets celebration in the heart of Madhya Pradesh</p>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+        <div class="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm tracking-widest">
+          Near Bhedaghat • Marble Rocks
+        </div>
+        <button onclick="openInquiryModal()" class="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white font-medium px-6 py-2 rounded-full text-sm tracking-wider transition">
+          📩 SEND RESORT INQUIRY
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAY BOOKING MODAL POP-UP -->
+  <div id="booking-modal" class="fixed inset-0 z-50 invisible opacity-0 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
+    <div class="bg-white w-full max-w-xl rounded-3xl p-8 md:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-700 text-2xl font-bold transition">&times;</button>
+      
+      <div class="text-center mb-8">
+        <h3 class="heading-font text-3xl text-[#0F766E]">Reserve Your Luxury Stay</h3>
+        <p class="text-sm text-gray-500 mt-1">Vasundhara Resort | Jabalpur, MP</p>
+      </div>
+
+      <form id="stay-booking-form" onsubmit="handleStayBooking(event)" class="space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Check-In Date</label>
+            <input id="modal-checkin" type="date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Check-Out Date</label>
+            <input id="modal-checkout" type="date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Full Name</label>
+          <input type="text" placeholder="Enter your full name" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Mobile Number</label>
+            <input type="tel" placeholder="10-digit number" required pattern="[0-9]{10}" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Email Address</label>
+            <input type="email" placeholder="name@domain.com" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Total Guests</label>
+            <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+              <option value="1">1 Person</option>
+              <option value="2" selected>2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5+">5+ People</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Rooms Needed</label>
+            <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+              <option value="1" selected>1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+              <option value="4+">4+ Rooms</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="availability-submit-btn"
+                class="w-full mt-6 bg-[#0F766E] text-white py-4 rounded-xl font-semibold tracking-wide hover:bg-[#0d665f] transition duration-200 flex items-center justify-center gap-2">
+          CHECK AVAILABILITY &amp; BOOK
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GENERAL INQUIRY MODAL (NEW FEATURE) -->
+  <div id="inquiry-modal" class="fixed inset-0 z-50 invisible opacity-0 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
+    <div class="bg-white w-full max-w-xl rounded-3xl p-8 md:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeInquiryModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-700 text-2xl font-bold transition">&times;</button>
+      
+      <div class="text-center mb-6">
+        <h3 class="heading-font text-3xl text-[#0F766E]">General &amp; Event Inquiry</h3>
+        <p class="text-sm text-gray-500 mt-1">Planning a corporate retreat, wedding, or dinner? Let us know!</p>
+      </div>
+
+      <form id="general-inquiry-form" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Your Full Name</label>
+          <input type="text" required placeholder="John Doe" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Contact Number</label>
+            <input type="tel" required placeholder="Mobile number" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Email Address</label>
+            <input type="email" required placeholder="email@example.com" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Inquiry Category</label>
+          <select id="inquiry-type" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]">
+            <option value="Wedding / Party Celebration">Wedding / Party Celebration</option>
+            <option value="Corporate Event Venue">Corporate Event Venue / Gathering</option>
+            <option value="Restaurant Mass Booking">Restaurant Group Dining / Catering</option>
+            <option value="Other Custom Request">Other Custom Request</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Provide More Details</label>
+          <textarea rows="3" required placeholder="Describe dates, guest limits or specific customizations requested..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0F766E]"></textarea>
+        </div>
+        <button type="submit" class="w-full mt-4 bg-[#0F766E] text-white py-4 rounded-xl font-semibold hover:bg-[#0d665f] transition">
+          SUBMIT INQUIRY DETAILS
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX CONTAINER MODAL (NEW GALLERY EXTRAS) -->
+  <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/95 flex flex-col justify-center items-center p-4">
+    <button class="absolute top-6 right-8 text-white text-4xl font-light">&times;</button>
+    <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl">
+    <p id="lightbox-caption" class="text-white/80 mt-4 font-medium tracking-wide text-lg"></p>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="uppercase tracking-widest text-emerald-600 font-medium">Since 2022</span>
+          <h2 class="heading-font text-5xl mt-4 leading-tight">A sanctuary of elegance and joy in Jabalpur</h2>
+          <div class="mt-8 space-y-6 text-lg text-gray-600">
+            <p>Vasundhara Resort is nestled near the iconic Bhedaghat and Marble Rocks of Jabalpur. Our sprawling 15-acre property features lush green lawns, luxurious accommodations, an award-winning restaurant, and premier event venues.</p>
+            <p>Whether it's a romantic getaway, family vacation, destination wedding, or high-energy pool party, Vasundhara offers an unforgettable blend of serenity and celebration.</p>
+          </div>
+        </div>
+        <img src="https://picsum.photos/id/1016/800/600" alt="Vasundhara Resort Aerial View" class="rounded-3xl shadow-2xl gallery-img" onclick="openLightbox(this.src, 'Vasundhara Resort Aerial View')">
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section id="rooms" class="py-20 bg-[#F8F4F0]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="heading-font text-5xl text-center mb-4">Luxury Stays</h2>
+      <p class="text-center text-gray-600 mb-16">Handcrafted comfort with modern amenities</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-3xl overflow-hidden card-hover">
+          <img src="https://picsum.photos/id/1015/600/400" class="w-full h-64 object-cover gallery-img" alt="Executive Suite" onclick="openLightbox(this.src, 'Executive Suite')">
+          <div class="p-8">
+            <h3 class="heading-font text-2xl">Executive Suite</h3>
+            <p class="text-emerald-700">₹18,500 / night</p>
+            <button onclick="openBookingModal()" class="mt-6 w-full py-4 border-2 border-[#0F766E] hover:bg-[#0F766E] hover:text-white rounded-2xl font-medium transition duration-200">BOOK NOW</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl overflow-hidden card-hover">
+          <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623192.jpg" class="w-full h-64 object-cover gallery-img" alt="Deluxe Room" onclick="openLightbox(this.src, 'Deluxe Room')">
+          <div class="p-8">
+            <h3 class="heading-font text-2xl">Deluxe Room</h3>
+            <p class="text-emerald-700">₹2000 / night</p>
+            <button onclick="openBookingModal()" class="mt-6 w-full py-4 border-2 border-[#0F766E] hover:bg-[#0F766E] hover:text-white rounded-2xl font-medium transition duration-200">BOOK NOW</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl overflow-hidden card-hover">
+          <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623180.jpg" class="w-full h-64 object-cover gallery-img" alt="Normal Room" onclick="openLightbox(this.src, 'Normal Room')">
+          <div class="p-8">
+            <h3 class="heading-font text-2xl">Normal Room</h3>
+            <p class="text-emerald-700">₹1000 / night</p>
+            <button onclick="openBookingModal()" class="mt-6 w-full py-4 border-2 border-[#0F766E] hover:bg-[#0F766E] hover:text-white rounded-2xl font-medium transition duration-200">BOOK NOW</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DINING -->
+  <section id="dining" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="heading-font text-5xl">Saffron &amp; Flame</h2>
+        <p class="text-xl text-gray-600 mt-3">Fine Dining at Vasundhara Resort</p>
+        
+        <!-- SURPRISE DISH SELECTOR (NEW SIDE EXTRAS) -->
+        <button onclick="surpriseMeDish()" class="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-[#D4AF37] text-white px-6 py-2.5 rounded-full font-medium shadow-md hover:brightness-110 active:scale-95 transition text-sm">
+          🎲 Confused? Let Us Pick a Dish!
+        </button>
+      </div>
+
+      <!-- Reservation Widget -->
+      <div class="bg-[#0F766E] text-white rounded-3xl p-10 mb-16 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-medium mb-8 text-center">Reserve Your Table</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-xs mb-2">DATE</label>
+            <input id="reserve-date" type="date" class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs mb-2">TIME</label>
+            <select id="reserve-time" class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 focus:outline-none">
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs mb-2">GUESTS</label>
+            <select id="reserve-guests" class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 focus:outline-none">
+              <option value="2">2 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="6">6 Guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button onclick="reserveTable()" class="flex-1 bg-white text-[#0F766E] py-4 rounded-3xl font-semibold text-lg hover:bg-amber-100 transition">
+            CONFIRM RESERVATION
+          </button>
+          <button onclick="openInquiryModal()" class="border border-white/40 hover:bg-white/10 px-6 py-4 rounded-3xl text-sm font-medium tracking-wide transition">
+            💼 CATERING INQUIRY
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Navigation Grid -->
+      <div class="flex justify-center gap-12 mb-12 border-b">
+        <button onclick="switchTab(0)" id="tab-veg" class="tab-btn pb-4 border-b-4 border-transparent text-lg font-medium tracking-wide hover:text-emerald-700 active">VEGETARIAN (10)</button>
+        <button onclick="switchTab(1)" id="tab-nonveg" class="tab-btn pb-4 border-b-4 border-transparent text-lg font-medium tracking-wide hover:text-emerald-700">NON-VEGETARIAN (10)</button>
+      </div>
+
+      <!-- 10 VEG ITEMS EXPANDED WITH RATINGS -->
+      <div id="veg-content">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- 1 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/restaurant-1.jpg" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Gravy Veg Paneer" onclick="openLightbox(this.src, 'Gravy Veg Paneer')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Gravy Veg Paneer</h4><p class="text-emerald-700 font-bold">₹680</p></div>
+              <p class="text-xs text-gray-500 mt-1">Lush paneer cubes simmered in our signature rich spiced tomato gravy.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.9 <span class="text-gray-400 font-normal">(140 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/restaurant-2.jpg" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Crispy Fried Rolls" onclick="openLightbox(this.src, 'Crispy Fried Rolls')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Crispy Fried Rolls</h4><p class="text-emerald-700 font-bold">₹720</p></div>
+              <p class="text-xs text-gray-500 mt-1">Flaky spring rolls stuffed with seasoned heritage farm greens.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.7 <span class="text-gray-400 font-normal">(98 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/restaurant-4.jpg" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Royal Vasundhara Thali" onclick="openLightbox(this.src, 'Royal Vasundhara Thali')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Royal Vasundhara Thali</h4><p class="text-emerald-700 font-bold">₹520</p></div>
+              <p class="text-xs text-gray-500 mt-1">A grand platter featuring local MP delicacies, dals, breads, and dynamic desserts.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 5.0 <span class="text-gray-400 font-normal">(420 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAC8mQTB8kH6vXHXBo_F3YBnTTFWusR2adz8OcgHyoNbW54L38" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Sweet Crispy Corn" onclick="openLightbox(this.src, 'Sweet Crispy Corn')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Sweet Crispy Corn</h4><p class="text-emerald-700 font-bold">₹380</p></div>
+              <p class="text-xs text-gray-500 mt-1">Golden corn kernels seasoned perfectly with local secret chaat spice mixes.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.6 <span class="text-gray-400 font-normal">(210 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 5 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/493/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Mushroom Truffle Risotto" onclick="openLightbox(this.src, 'Mushroom Truffle Risotto')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Mushroom Risotto</h4><p class="text-emerald-700 font-bold">₹640</p></div>
+              <p class="text-xs text-gray-500 mt-1">Creamy arborio rice loaded with earthy wild mushrooms and parmesan.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.8 <span class="text-gray-400 font-normal">(84 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 6 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/566/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Woodfired Margherita" onclick="openLightbox(this.src, 'Woodfired Margherita')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Woodfired Margherita</h4><p class="text-emerald-700 font-bold">₹590</p></div>
+              <p class="text-xs text-gray-500 mt-1">Hand-stretched Neapolitan crust topped with fresh mozzarella and local sweet basil leaves.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.9 <span class="text-gray-400 font-normal">(165 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 7 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/1080/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Avocado Toast Salad" onclick="openLightbox(this.src, 'Avocado Toast Salad')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Avocado Toast Salad</h4><p class="text-emerald-700 font-bold">₹490</p></div>
+              <p class="text-xs text-gray-500 mt-1">Sourdough base topped with rich hass avocado mash, seeds, and micro-greens.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.5 <span class="text-gray-400 font-normal">(72 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 8 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/312/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Veg Dum Biryani" onclick="openLightbox(this.src, 'Veg Dum Biryani')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Veg Dum Biryani</h4><p class="text-emerald-700 font-bold">₹580</p></div>
+              <p class="text-xs text-gray-500 mt-1">Fragrant basmati rice slow cooked in a sealed pot with saffron and fresh root veggies.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.8 <span class="text-gray-400 font-normal">(194 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 9 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/835/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Tandoori Soya Chaap" onclick="openLightbox(this.src, 'Tandoori Soya Chaap')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Tandoori Soya Chaap</h4><p class="text-emerald-700 font-bold">₹460</p></div>
+              <p class="text-xs text-gray-500 mt-1">Soya chunks marinated overnight in yoghurt marinade and fired over glowing coals.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.7 <span class="text-gray-400 font-normal">(113 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 10 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/999/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Chilli Potato Crisps" onclick="openLightbox(this.src, 'Chilli Potato Crisps')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Chilli Potato Crisps</h4><p class="text-emerald-700 font-bold">₹420</p></div>
+              <p class="text-xs text-gray-500 mt-1">Wok-tossed sweet potato sticks glazed in sweet honey chili reduction sauce.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.6 <span class="text-gray-400 font-normal">(89 reviews)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 NON-VEG ITEMS EXPANDED WITH RATINGS -->
+      <div id="nonveg-content" class="hidden">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- 1 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg?quality=90&resize=440,400" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Butter Chicken" onclick="openLightbox(this.src, 'Butter Chicken')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Butter Chicken</h4><p class="text-emerald-700 font-bold">₹780</p></div>
+              <p class="text-xs text-gray-500 mt-1">Tender tandoori chicken shreds simmered inside a smooth velvety butter cream gravy.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 5.0 <span class="text-gray-400 font-normal">(380 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrl1HEshiyasIWIdvV7uxt0ez96_o6D9_5w&s" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Mutton Rogan Josh" onclick="openLightbox(this.src, 'Mutton Rogan Josh')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Mutton Rogan Josh</h4><p class="text-emerald-700 font-bold">₹920</p></div>
+              <p class="text-xs text-gray-500 mt-1">Traditional Kashmiri slow cooked lamb leg chunk stew bursting with aromatic heat.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.9 <span class="text-gray-400 font-normal">(245 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://www.scrumptiously.com/wp-content/uploads/2023/01/FishTikka-500x500.webp" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Fish Tikka" onclick="openLightbox(this.src, 'Fish Tikka')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Fish Tikka</h4><p class="text-emerald-700 font-bold">₹850</p></div>
+              <p class="text-xs text-gray-500 mt-1">Fresh local river catches prepared with lime mustard marination over iron charcoal skewers.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.8 <span class="text-gray-400 font-normal">(167 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe525e4lGllloQk9y1o8RLK-inP9Klymxdog&s" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Chicken Dum Biryani" onclick="openLightbox(this.src, 'Chicken Dum Biryani')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Chicken Dum Biryani</h4><p class="text-emerald-700 font-bold">₹680</p></div>
+              <p class="text-xs text-gray-500 mt-1">Layered basmati rice dome encasing chicken portions cooked in internal juices.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.9 <span class="text-gray-400 font-normal">(290 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 5 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/292/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Smoked Salmon Fillet" onclick="openLightbox(this.src, 'Smoked Salmon Fillet')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Smoked Salmon Fillet</h4><p class="text-emerald-700 font-bold">₹1150</p></div>
+              <p class="text-xs text-gray-500 mt-1">Pan-seared premium salmon paired with wild caper dill butter emulsion dressings.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.7 <span class="text-gray-400 font-normal">(63 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 6 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/63/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Grilled Lamb Chops" onclick="openLightbox(this.src, 'Grilled Lamb Chops')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Grilled Lamb Chops</h4><p class="text-emerald-700 font-bold">₹1250</p></div>
+              <p class="text-xs text-gray-500 mt-1">Charbroiled lamb racks heavily infused with hand-crushed rosemary stalks and rock salts.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 5.0 <span class="text-gray-400 font-normal">(112 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 7 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/1060/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Classic Angus Burger" onclick="openLightbox(this.src, 'Classic Angus Burger')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Classic Angus Burger</h4><p class="text-emerald-700 font-bold">₹620</p></div>
+              <p class="text-xs text-gray-500 mt-1">Thick succulent meat patty loaded inside brioche buns with aged cheddar sheets.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.6 <span class="text-gray-400 font-normal">(154 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 8 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/431/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Crispy Prawn Tempura" onclick="openLightbox(this.src, 'Crispy Prawn Tempura')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Crispy Prawn Tempura</h4><p class="text-emerald-700 font-bold">₹890</p></div>
+              <p class="text-xs text-gray-500 mt-1">Light, super airy Japanese style crispy batter fried king sea prawns.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.8 <span class="text-gray-400 font-normal">(95 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 9 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/961/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Chicken Alfredo Pasta" onclick="openLightbox(this.src, 'Chicken Alfredo Pasta')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Chicken Alfredo Pasta</h4><p class="text-emerald-700 font-bold">₹690</p></div>
+              <p class="text-xs text-gray-500 mt-1">Fettuccine folds tossed alongside sliced grilled breast strips inside dense white creams.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.7 <span class="text-gray-400 font-normal">(138 reviews)</span></div>
+            </div>
+          </div>
+          <!-- 10 -->
+          <div class="flex gap-6 card-hover bg-white p-6 rounded-3xl shadow-sm">
+            <img src="https://picsum.photos/id/723/300/200" class="w-32 h-24 object-cover rounded-2xl gallery-img" alt="Crispy Duck Confit" onclick="openLightbox(this.src, 'Crispy Duck Confit')">
+            <div class="flex-1">
+              <div class="flex justify-between items-start"><h4 class="font-semibold text-lg">Crispy Duck Confit</h4><p class="text-emerald-700 font-bold">₹1380</p></div>
+              <p class="text-xs text-gray-500 mt-1">Slow crisp roasted tender duck legs glazed with a bright sweet citrus reduction.</p>
+              <div class="text-amber-500 text-xs mt-2 font-bold">★ 4.9 <span class="text-gray-400 font-normal">(51 reviews)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POOL & EVENTS -->
+  <section id="pool" class="py-20 bg-[#0F766E] text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="heading-font text-5xl text-center mb-16">Poolside &amp; Events</h2>
+
+      <!-- Pool Pass Widget -->
+      <div class="bg-white/10 backdrop-blur-2xl rounded-3xl p-10 max-w-xl mx-auto mb-20">
+        <h3 class="text-3xl font-medium text-center mb-8">Book Pool Entry Pass</h3>
+        
+        <div class="space-y-8">
+          <div>
+            <label class="block text-sm mb-3">DATE</label>
+            <input id="pool-date" type="date" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white focus:outline-none">
+          </div>
+          
+          <div>
+            <label class="block text-sm mb-3">TIME SLOT</label>
+            <select id="pool-slot" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white focus:outline-none">
+              <option value="morning">Morning (9 AM - 1 PM) - ₹500/adult</option>
+              <option value="afternoon">Afternoon (2 PM - 6 PM) - ₹500/adult</option>
+              <option value="evening">Evening Sundowner Party (6 PM onwards) - ₹800/adult</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm mb-3">NUMBER OF GUESTS</label>
+            <input id="pool-guests" type="number" min="1" max="30" value="2" 
+                   oninput="calculatePoolTotal()" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white text-2xl focus:outline-none">
+          </div>
+          
+          <div class="bg-white/10 rounded-2xl p-6">
+            <div class="flex justify-between text-lg">
+              <span>Total Estimated Price</span>
+              <span id="pool-total" class="font-semibold text-3xl">₹2,000</span>
+            </div>
+            <p class="text-xs text-white/60 mt-2">* Children under 12: 50% off</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+          <button onclick="bookPoolPass()" class="py-5 bg-gradient-to-r from-[#D4AF37] to-amber-300 text-[#0F766E] rounded-3xl font-bold text-lg hover:brightness-110 transition">
+            BOOK POOL PASS
+          </button>
+          <button onclick="openInquiryModal()" class="py-5 border border-white/30 hover:bg-white/10 text-white rounded-3xl font-semibold text-sm tracking-wide transition">
+            🎉 INQUIRE POOL PARTY VENUE
+          </button>
+        </div>
+      </div>
+
+      <!-- Pool Gallery -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/2025-01-11-768x549.jpg" class="gallery-img rounded-3xl w-full h-64 object-cover" alt="Luxury Swimming Pool Waters" onclick="openLightbox(this.src, 'Luxury Swimming Pool Waters')">
+        <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623038.jpg" class="gallery-img rounded-3xl w-full h-64 object-cover" alt="Sunset Deck Gathering" onclick="openLightbox(this.src, 'Sunset Deck Gathering')">
+        <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/unnamed-3-768x549.jpg" class="gallery-img rounded-3xl w-full h-64 object-cover" alt="Sundowner Music Event Setup" onclick="openLightbox(this.src, 'Sundowner Music Event Setup')">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERIES (EXPANDED TO 8 TOTAL IMAGES WITH CUSTOM SECTIONS) -->
+  <section id="gallery" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="heading-font text-5xl text-center mb-4">Experiences at Vasundhara</h2>
+      <p class="text-center text-gray-500 mb-16">Click on any image below to view it in full screen detail</p>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Section A -->
+        <div>
+          <h3 class="font-semibold mb-6 text-xl text-[#0F766E] border-l-4 border-[#D4AF37] pl-3">Rooms, Suites &amp; Interiors</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623168.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Premium Suite Bedding Structure" onclick="openLightbox(this.src, 'Premium Suite Bedding Structure')">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623192.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Deluxe Room Terrace View Layout" onclick="openLightbox(this.src, 'Deluxe Room Terrace View Layout')">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623144.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Luxury Washroom Spa Lounge" onclick="openLightbox(this.src, 'Luxury Washroom Spa Lounge')">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1480367405666685205/original/ec0d1fa4-5ee6-4fb6-9096-37f02acfaa4a.jpeg?im_w=720" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Executive Room Guest Lounge Corner" onclick="openLightbox(this.src, 'Executive Room Guest Lounge Corner')">
+          </div>
+        </div>
+        <!-- Section B -->
+        <div>
+          <h3 class="font-semibold mb-6 text-xl text-[#0F766E] border-l-4 border-[#D4AF37] pl-3">Event Lawns, Gardens &amp; Dining</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623160.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Grand Destination Wedding Front Lawns" onclick="openLightbox(this.src, 'Grand Destination Wedding Front Lawns')">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623186.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Evening Courtyard Ambient Illuminations" onclick="openLightbox(this.src, 'Evening Courtyard Ambient Illuminations')">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623123.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Saffron &amp; Flame Indoor Main Dining Hall" onclick="openLightbox(this.src, 'Saffron &amp; Flame Indoor Main Dining Hall')">
+            <img src="https://www.vashudhraresort.com/wp-content/uploads/2026/02/739623144.jpg" class="gallery-img rounded-3xl w-full h-48 object-cover" alt="Outdoor Al-Fresco Garden Canopy Tables" onclick="openLightbox(this.src, 'Outdoor Al-Fresco Garden Canopy Tables')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0F766E] text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-2xl heading-font">Vasundhara Resort</p>
+      <p class="mt-2">Jabalpur, Madhya Pradesh • Near Bhedaghat</p>
+      <div class="my-6 flex justify-center gap-6 text-sm">
+        <a href="#about" class="opacity-80 hover:opacity-100 transition">About Property</a>
+        <a href="#dining" class="opacity-80 hover:opacity-100 transition">Saffron &amp; Flame Menu</a>
+        <button onclick="openInquiryModal()" class="text-[#D4AF37] opacity-90 hover:opacity-100 transition font-bold">Contact/Inquire Directly</button>
+      </div>
+      <p class="mt-8 text-sm opacity-70">© 2026 All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // All Dish Array Items for the Randomizer Feature
+    const allDishes = [
+      { name: "Gravy Veg Paneer", type: "Veg" },
+      { name: "Crispy Fried Rolls", type: "Veg" },
+      { name: "Royal Vasundhara Thali", type: "Veg" },
+      { name: "Sweet Crispy Corn", type: "Veg" },
+      { name: "Mushroom Risotto", type: "Veg" },
+      { name: "Woodfired Margherita", type: "Veg" },
+      { name: "Avocado Toast Salad", type: "Veg" },
+      { name: "Veg Dum Biryani", type: "Veg" },
+      { name: "Tandoori Soya Chaap", type: "Veg" },
+      { name: "Chilli Potato Crisps", type: "Veg" },
+      { name: "Butter Chicken", type: "Non-Veg" },
+      { name: "Mutton Rogan Josh", type: "Non-Veg" },
+      { name: "Fish Tikka", type: "Non-Veg" },
+      { name: "Chicken Dum Biryani", type: "Non-Veg" },
+      { name: "Smoked Salmon Fillet", type: "Non-Veg" },
+      { name: "Grilled Lamb Chops", type: "Non-Veg" },
+      { name: "Classic Angus Burger", type: "Non-Veg" },
+      { name: "Crispy Prawn Tempura", type: "Non-Veg" },
+      { name: "Chicken Alfredo Pasta", type: "Non-Veg" },
+      { name: "Crispy Duck Confit", type: "Non-Veg" }
+    ];
+
+    // Surprise Me Logic
+    function surpriseMeDish() {
+      const randomIndex = Math.floor(Math.random() * allDishes.length);
+      const dish = allDishes[randomIndex];
+      alert(`🎲 Our Chef Recommends:\n\n✨ [${dish.type}] ${dish.name} ✨\n\nGive it a try during your visit to Saffron & Flame!`);
+    }
+
+    // Lightbox Control Functions
+    function openLightbox(src, altText) {
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      img.src = src;
+      caption.innerText = altText || "Vasundhara Resort Premium View";
+      modal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+
+    // Stay Booking Modal Controls
+    function openBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      modal.classList.add('invisible', 'opacity-0');
+    }
+
+    // Inquiry Modal Controls
+    function openInquiryModal() {
+      const modal = document.getElementById('inquiry-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+    }
+
+    function closeInquiryModal() {
+      const modal = document.getElementById('inquiry-modal');
+      modal.classList.add('invisible', 'opacity-0');
+    }
+
+    // Checking Availability form processing
+    function handleStayBooking(event) {
+      event.preventDefault();
+      const checkin = document.getElementById('modal-checkin').value;
+      const checkout = document.getElementById('modal-checkout').value;
+      const btn = document.getElementById('availability-submit-btn');
+
+      if (new Date(checkout) <= new Date(checkin)) {
+        alert("❌ Check-out date must be after the Check-in date.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Checking Rooms Availability...
+      `;
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerText = "CHECK AVAILABILITY & BOOK";
+        closeBookingModal();
+        alert("✨ Perfect! Luxury rooms are available for your selected dates. Your room reservation inquiry has been recorded successfully at Vasundhara Resort!");
+        document.getElementById('stay-booking-form').reset();
+        setupDefaultDates();
+      }, 2000);
+    }
+
+    // Inquiry Form Submission Handling
+    function handleInquirySubmit(event) {
+      event.preventDefault();
+      const type = document.getElementById('inquiry-type').value;
+      alert(`📩 Details Received!\nYour custom inquiry for "${type}" has been dispatched straight to our front office coordinators. We will call you within 24 hours!`);
+      document.getElementById('general-inquiry-form').reset();
+      closeInquiryModal();
+    }
+
+    function calculatePoolTotal() {
+      const guests = parseInt(document.getElementById('pool-guests').value) || 1;
+      const slot = document.getElementById('pool-slot').value;
+      let pricePerPerson = slot === 'evening' ? 800 : 500;
+      const total = guests * pricePerPerson;
+      document.getElementById('pool-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function bookPoolPass() {
+      const guests = document.getElementById('pool-guests').value;
+      if (!guests) return alert("Please enter number of guests");
+      alert(`✅ Pool Pass booked successfully for ${guests} guests! Confirmation sent to your email.`);
+    }
+
+    function reserveTable() {
+      const date = document.getElementById('reserve-date').value;
+      if (!date) return alert("Please select a date");
+      alert("🎉 Table reservation confirmed! We look forward to hosting you.");
+    }
+
+    function switchTab(tab) {
+      const veg = document.getElementById('veg-content');
+      const nonveg = document.getElementById('nonveg-content');
+      const tabVeg = document.getElementById('tab-veg');
+      const tabNonveg = document.getElementById('tab-nonveg');
+      
+      if (tab === 0) {
+        veg.classList.remove('hidden');
+        nonveg.classList.add('hidden');
+        tabVeg.classList.add('border-emerald-600');
+        tabNonveg.classList.remove('border-emerald-600');
+      } else {
+        veg.classList.add('hidden');
+        nonveg.classList.remove('hidden');
+        tabVeg.classList.remove('border-emerald-600');
+        tabNonveg.classList.add('border-emerald-600');
+      }
+    }
+
+    function setupDefaultDates() {
+      const today = new Date().toISOString().split('T')[0];
+      const tomorrowObj = new Date();
+      tomorrowObj.setDate(tomorrowObj.getDate() + 1);
+      const tomorrow = tomorrowObj.toISOString().split('T')[0];
+
+      if (document.getElementById('reserve-date')) document.getElementById('reserve-date').value = today;
+      if (document.getElementById('pool-date')) document.getElementById('pool-date').value = today;
+      if (document.getElementById('modal-checkin')) document.getElementById('modal-checkin').value = today;
+      if (document.getElementById('modal-checkout')) document.getElementById('modal-checkout').value = tomorrow;
+    }
+
+    window.onload = () => {
+      calculatePoolTotal();
+      document.getElementById('pool-slot').addEventListener('change', calculatePoolTotal);
+      setupDefaultDates();
+      document.getElementById('tab-veg').classList.add('border-emerald-600');
+    };
+  </script>
+</body>
+</html>

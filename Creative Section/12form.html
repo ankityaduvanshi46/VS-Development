@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .fom-container {
+            min-height: 450px;
+            width: 350px;
+            border: 3px solid black;
+            padding: 20px 20px 20px 50px;
+            margin-left: 250px;
+            border-radius: 20px;
+            background: rgb(135, 254, 246);
+        }
+        h2 {
+            font-size: 36px;
+            color: blueviolet;
+            margin-top: 0;
+        }
+        label {
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: blueviolet;
+        }
+        input {
+            border: 3px solid rgb(13, 41, 39); 
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 10px;
+        }
+        select {
+            border-radius: 20px;
+            color: bisque;
+            background-color: brown;
+            padding: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 2px solid black;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="fom-container">
+        <h2>Form</h2>
+        <form>
+            <label for="student-name">Student Name :- </label><br/>
+            <input type="text" id="student-name" name="studentName"/><br/>
+            
+            <label for="father-name">Father Name :-</label><br/>
+            <input type="text" id="father-name" name="fatherName"/><br/>
+            
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email"/><br/>
+            
+            <label for="phone">Phone no. :- </label><br/>
+            <input type="number" id="phone" name="phone"/><br/>
+            
+            <label for="profile">Profile Must be Image :-</label><br/>
+            <input type="file" id="profile" name="profile"/><br/>
+            
+            <label for="password">Password </label><br/>
+            <input type="password" id="password" name="password"/><br/>
+            
+            <div class="section-title">Gender</div>
+            <label>
+                <input type="radio" name="Gender" value="Male" />Male
+            </label>
+            <label>
+                <input type="radio" name="Gender" value="Female" />Female
+            </label>
+            <label>
+                <input type="radio" name="Gender" value="Other" />Other
+            </label>
+            <br/> 
+            
+            <div class="section-title">Hobbies</div>
+            <label>
+                <input type="checkbox" name="hobbies" value="Cricket">Cricket
+            </label><br/>
+            <label>
+                <input type="checkbox" name="hobbies" value="Swimming">Swimming
+            </label><br/>
+            <label>
+                <input type="checkbox" name="hobbies" value="Gaming">Gaming
+            </label><br/>
+            
+            <label for="country" class="section-title">Country</label><br/>
+            <select name="country" id="country">
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="England">England</option>
+                <option value="Japan">Japan</option>
+                <option value="Sri lanka">Sri lanka</option>
+                <option value="Germany">Germany</option>
+            </select><br/><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

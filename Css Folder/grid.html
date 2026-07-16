@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: grid;
+            grid-template-columns: 100px 200px 200px;
+            grid-template-rows: 100px;
+            grid-column-gap:40px;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+        .inner {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+            <div class="inner" id="first"><p>1</p></div>
+            <div class="inner" id="second"><p>2</p></div>
+            <div class="inner" id="third"><p>3</p></div>
+            <div class="inner" id="fourth"><p>3</p></div> 
+            
+        </div>
+    </body>
+    </html>
